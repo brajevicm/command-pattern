@@ -6,29 +6,28 @@ package com.brajevicm;
  * Author: Milos Brajevic
  * Mail: brajevicms@gmail.com
  */
-public class UpvoteAction<T> implements Action {
+public class UpvoteAction implements Action {
   private Upvote upvote;
-  private T postOrComment;
   private User user;
 
-  public UpvoteAction(Upvote upvote, T postOrComment, User user) {
+  public UpvoteAction(Upvote upvote, User user) {
     this.upvote = upvote;
-    this.postOrComment = postOrComment;
     this.user = user;
   }
 
-  public void setPostOrComment(T postOrComment) {
-    this.postOrComment = postOrComment;
+  public void setUpvote(Upvote upvote) {
+    this.upvote = upvote;
   }
 
   @Override
   public void execute() {
-    upvote.setPostOrComment(postOrComment);
     upvote.setUser(user);
-    if (postOrComment instanceof Post) {
-      user.upvotePost((Post) postOrComment);
-    } else if (postOrComment instanceof Comment) {
-      user.upvoteComment((Comment) postOrComment);
+
+
+    if (upvote.getPostOrComment() instanceof Post) {
+      user.upvotePost((Post) upvote.getPostOrComment());
+    } else if (upvote.getPostOrComment() instanceof Comment) {
+      user.upvoteComment((Comment) upvote.getPostOrComment());
     }
 
   }

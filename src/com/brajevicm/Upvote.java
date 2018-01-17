@@ -7,13 +7,11 @@ package com.brajevicm;
  * Mail: brajevicms@gmail.com
  */
 public class Upvote<T> {
-  private int numberOfUpvotes = 0;
   private T postOrComment;
   private User user;
 
   public Upvote(T postOrComment) {
     this.postOrComment = postOrComment;
-    numberOfUpvotes++;
   }
 
   public void setPostOrComment(T postOrComment) {
@@ -24,11 +22,15 @@ public class Upvote<T> {
     this.user = user;
   }
 
+  public T getPostOrComment() {
+    return postOrComment;
+  }
+
   @Override
   public String toString() {
     return "Upvote{" +
-      "numberOfUpvotes=" + numberOfUpvotes +
-//      ", postOrComment=" + postOrComment +
+      "postOrComment=" + postOrComment +
+      ", user=" + user +
       '}';
   }
 }

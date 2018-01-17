@@ -11,7 +11,7 @@ public class Main {
 
     PostAction postAction = new PostAction(post, user);
     CommentAction commentAction = new CommentAction(comment, user);
-    UpvoteAction upvoteAction = new UpvoteAction(upvote, post, user);
+    UpvoteAction upvoteAction = new UpvoteAction(upvote, user);
 
     ActionInvoker invoker = new ActionInvoker(postAction);
     invoker.invoke();
@@ -22,9 +22,7 @@ public class Main {
     invoker.setAction(upvoteAction);
     invoker.invoke();
 
-    upvoteAction.setPostOrComment(comment);
-    invoker.invoke();
-
     System.out.println(user);
+    System.out.println(upvote);
   }
 }
